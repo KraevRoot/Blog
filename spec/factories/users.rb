@@ -8,5 +8,11 @@ FactoryGirl.define do
       role 'admin'
     end
 
+    confirmed_at Time.now
+
+    trait :unconfirmed_user do
+      confirmed_at nil
+    end
+
   end
 end
