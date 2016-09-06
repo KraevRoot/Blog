@@ -1,0 +1,10 @@
+%h1 Edit post
+
+= simple_form_for @post do |f|
+  .form-inputs
+    = f.input :title, placeholder: 'Enter title'
+    = f.input :content, as: :text, placeholder: 'Content'
+  = f.button :submit, 'Update post'
+
+= link_to 'Cancel', post_path(@post), :class => 'btn btn-danger'
+  
