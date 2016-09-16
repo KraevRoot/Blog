@@ -1,3 +1,8 @@
 - @posts.each do |post|
   %h1= link_to h(post.title), post
-  = button_to 'Edit post', edit_post_path(post), :class => 'btn btn-danger', method: :get
+  = link_to 'Edit post', edit_post_path(post), class: 'btn btn-danger', method: :get
+  = link_to 'Comments', post_path(post), class: 'btn btn-default', method: :get
+
+%br
+%br
+= link_to 'New post', new_post_path, class: 'btn btn-default'
