@@ -19,6 +19,7 @@ gem 'devise'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'simple_form'
+gem 'pg', '~> 0.18.4'
 group :development do
   gem 'better_errors'
   gem 'guard-bundler'
@@ -39,10 +40,8 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'rspec-rails'
   gem 'rubocop'
-  gem 'sqlite3'
 end
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 group :test do
