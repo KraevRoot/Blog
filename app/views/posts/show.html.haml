@@ -1,8 +1,13 @@
-%h1 Title:
-%p= h(@post.title)
-%h1 Content:
-%p= @post.content
-
+%br
+.panel.panel-primary 
+  .panel-heading
+    = h(@post.title)
+  .panel-body
+    %p= @post.content
+    %br
+    - @post.categories.each do |category|
+      = ('#' + category.name).to_s
+  
 = link_to 'Posts', posts_path, :class => 'btn btn-primary'
 = link_to 'Edit post', edit_post_path(@post), :class => 'btn btn-warning'
 = link_to 'Delete post', post_path(@post), :class => 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }

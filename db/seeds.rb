@@ -7,6 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 User.destroy_all
+Post.destroy_all
+Comment.destroy_all
+Category.destroy_all
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
 # Users
@@ -28,4 +31,12 @@ Comment.create(user_id: potato.id, post_id: post3.id, content: 'Unbelievable!')
 Comment.create(user_id: potato.id, post_id: post4.id, content: 'Unbelievable!')
 Comment.create(user_id: potato.id, post_id: post4.id, content: 'Sh*t material. Unfollow!')
 
-
+# Categories
+Category.create(name: 'English')
+Category.create(name: 'Programming')
+Category.create(name: 'Food')
+Category.create(name: 'Music')
+Category.create(name: 'Sport')
+Category.create(name: 'Games')
+Category.create(name: 'Nature')
+Category.create(name: 'PC')

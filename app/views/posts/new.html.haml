@@ -4,5 +4,9 @@
   .form-inputs
     = f.input :title, placeholder: 'Enter title'
     = f.input :content, as: :text, placeholder: 'Content'
+    - Category.all.each do |category|
+      = check_box_tag "post[category_ids][]", category.id
+      = category.name
+      %br
   = f.button :submit, 'Create post'
   

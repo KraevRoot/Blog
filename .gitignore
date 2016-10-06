@@ -76,6 +76,7 @@ Gemfile.lock
 
 # vim artifacts
 **.swp
+**.swo
 
 # Environment files that may contain sensitive data
 .env
@@ -86,3 +87,5 @@ Gemfile.lock
 
 # Ignore application configuration
 /config/application.yml
+
+/config/secrets.yml

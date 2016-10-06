@@ -4,5 +4,9 @@
   .form-inputs
     = f.input :title, placeholder: 'Enter title'
     = f.input :content, as: :text, placeholder: 'Content'
+    - Category.all.each do |category|
+      = check_box_tag "post[category_ids][]", category.id, @post.category_ids.include?(category.id)
+      = category.name
+      %br
   = f.button :submit, 'Update post'
   = link_to 'Cancel', post_path(@post), class: 'btn btn-danger'

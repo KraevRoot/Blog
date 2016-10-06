@@ -1,8 +1,62 @@
-- @posts.each do |post|
-  %h1= link_to h(post.title), post
-  = link_to 'Edit post', edit_post_path(post), class: 'btn btn-danger', method: :get
-  = link_to 'Comments', post_path(post), class: 'btn btn-default', method: :get
+/////////////////////////////////////////////////////
+.container
+  .row
+    / Blog Entries Column
+    .col-md-8
+      %h1.page-header
+        Blog
+        %small Best Blog in the World!
+      / posts
+      - @posts.each do |post|
+        %h2
+          = link_to h(post.title), post
+        %p
+          by #{post.user.email}
+        %p
+          %span.glyphicon.glyphicon-time
+            Posted  #{time_ago_in_words(post.created_at)}
+        /%img.img-responsive{alt: "", src: "http://placehold.it/900x300"}
+        = truncate(post.content, length: 100, separator: ' ') { link_to ('Read more <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, post, class: 'btn btn-default' }
+      / Pagination
+      %ul.pager
+        %li.previous
+          %a{href: '#'} Prev
+        %li.next
+          %a{href: '#'} Next
+    .col-md-4
+      / Search block
+      .well
+        %h4 Search post
+        .input-group
+          %input.form-control{type: "text"}/
+          %span.input-group-btn
+            %button.btn.btn-default{type: "button"}
+              %span.glyphicon.glyphicon-search
+      / Categories block
+      .well
+        %h4 Categories
+        .row
+          .col-lg-6
+            %ul.list-unstyled
+              %li
+                %a{} Category 1
+              %li
+                %a{} Category 2
+          .col-lg-6
+            %ul.list-unstyled
+              %li
+                %a{} Category 1
+              %li
+                %a{} Category 2
+      / New post block
+      .well
+        %h4 Create your onw post
+        %p
+          = link_to 'New post', new_post_path, class: 'btn btn-default'
+    %hr/
+    / Footer
+    %footer
+      .row
+        .col-lg-12
+          %p Copyright Best Blog in the World! 2016
 
-%br
-%br
-= link_to 'New post', new_post_path, class: 'btn btn-default'

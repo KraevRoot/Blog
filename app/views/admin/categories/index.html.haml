@@ -1,0 +1,12 @@
+= render partial: 'form'
+
+%table.table
+  %thead
+    %th id
+    %th name
+  %tbody
+    - @categories.each do |category|
+      %tr
+        %td= category.id
+        %td= category.name
+        %td= link_to '', admin_category_path(category), method: :delete, class: 'glyphicon glyphicon-remove'
