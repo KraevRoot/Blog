@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :post do
-    title "My post title!!!"
-    content "Falos kurwa, jebani enot"
+    title   { Faker::Name.title }
+    content { Faker::Lorem.paragraph }
     user
 
     trait :title_nil do
