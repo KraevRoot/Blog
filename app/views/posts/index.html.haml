@@ -38,16 +38,9 @@
         .row
           .col-lg-6
             %ul.list-unstyled
-              %li
-                %a{} Category 1
-              %li
-                %a{} Category 2
-          .col-lg-6
-            %ul.list-unstyled
-              %li
-                %a{} Category 1
-              %li
-                %a{} Category 2
+              - Category.all.each do |category|
+                %li
+                  %a{}= category.name
       / New post block
       .well
         %h4 Create your onw post
