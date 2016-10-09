@@ -9,4 +9,5 @@
       %tr
         %td= category.id
         %td= category.name
+        %th= category.created_at.localtime.strftime("%m/%d/%Y at %I:%M%p")
         %td= link_to '', admin_category_path(category), method: :delete, class: 'glyphicon glyphicon-remove'
