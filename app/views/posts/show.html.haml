@@ -1,27 +1,25 @@
-%br
-.panel.panel-primary 
-  .panel-heading
-    = h(@post.title)
-  .panel-body
-    %p= @post.content
-    %br
-    - @post.categories.each do |category|
-      = ('#' + category.name).to_s
-  
-= link_to 'Posts', posts_path, :class => 'btn btn-primary'
-= link_to 'Edit post', edit_post_path(@post), :class => 'btn btn-warning'
-= link_to 'Delete post', post_path(@post), :class => 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
-
-%h1 Comments:
-- if @post.comments.empty?
-  %p= "No comments yet... so you can be the first! :)"
-- else
-  - @post.comments.each do |comment|
-    .panel.panel-default
-      .panel-heading
-        = time_ago_in_words(comment.created_at)
-        = "by " + comment.user.email
-        = link_to '', post_comment_path(@post, comment), method: :delete, class:'glyphicon glyphicon-remove', id: 'comment-delete'
-      .panel-body= comment.content
-  
-= render :partial => '/comments/form'
+.container
+  .row
+    / Blog Post Content Column
+    .col-lg-8
+      = render partial: 'post_actions'
+      / Blog Post
+      = render partial: 'post_base'
+      %hr/
+      = render partial: 'comments'
+      %br
+      .well
+        %h4 Leave a Comment:
+        = render partial: '/comments/form'
+      %hr/
+    / Blog Sidebar Widgets Column
+    .col-md-4
+      = render partial: 'search'
+      = render partial: 'categories'
+      = render partial: 'side_widget'
+  %hr/
+  / Footer
+  %footer
+    .row
+      .col-lg-12
+        %p Copyright © Your Website 2014

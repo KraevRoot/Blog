@@ -1,0 +1,5 @@
+%h1= h(@post.title)
+.glyphicon.glyphicon-time
+= "Posted on #{@post.created_at.localtime.strftime("%d/%m/%Y at %I:%M%p")} by #{@post.user.email}"
+%hr
+%p.lead= @post.content

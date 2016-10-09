@@ -1,0 +1,9 @@
+- @posts.each do |post|
+  %h2= link_to h(post.title), post
+  - post.categories.each do |category|
+    %span= "##{category.name}"
+  %p
+    %span.glyphicon.glyphicon-time
+    = " Posted on #{post.created_at.localtime.strftime("%d/%m/%Y at %I:%M%p")} by #{post.user.email}"
+    / image
+  = truncate(post.content, length:100, separator: ' ') { link_to ('Read more <span class="glyphicon glyphicon-chevron-right"></span>').html_safe, post, class: 'btn btn-default' }

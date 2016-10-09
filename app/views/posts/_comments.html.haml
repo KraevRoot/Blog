@@ -1,0 +1,15 @@
+.comments
+  - if @post.comments.empty?
+    %p= 'No comments yet... so you can be the first! :)'
+    %br
+  - else
+    - @post.comments.each do |comment|
+      .media
+        %a.pull-left{href: '#'}
+          %img.media-object{alt: '', src: 'http://placehold.it/64x64'}/
+        .media-body
+          %h5.media-heading.glyphicon.glyphicon-time
+          = " #{comment.created_at.localtime.strftime("%d/%m/%Y at %I:%M%p")} by #{comment.user.email}"
+          - if current_user&.admin? or current_user == comment.user
+            = link_to '', post_comment_path(@post, comment), method: :delete, class: 'glyphicon glyphicon-remove'
+          %p= comment.content
