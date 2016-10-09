@@ -7,12 +7,12 @@ feature 'Delete post' do
     create_post(@post.title, @post.content)
   end
 
-  scenario 'user can delete his own pos | user can\'t delete other\'s posts' do
-    delete_post(@post.id)
+  scenario 'user can delete his own posts | user can\'t delete other\'s posts' do
+    visit post_path(@post)
     if @post.user != @user
-      expect(page).to have_content 'You can\'t edit not your own posts.'
+      expect(page).to_not have_content 'Delete post'
     else
-      expect(page).to have_content 'Post successfully deleted.'
+      expect(page).to have_content 'Delete post'
     end
   end
 
@@ -20,14 +20,14 @@ feature 'Delete post' do
     signout
     @admin = FactoryGirl.create(:user, :admin)
     signin(@admin.email, @admin.password)
-    delete_post(@post.id)
+    delete_post(@post)
     expect(page).to have_content 'Post successfully deleted.'
   end
 
   scenario 'visitor can\'t delete post' do
     signout
-    delete_post(@post.id)
-    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    visit post_path(@post)
+    expect(page).to_not have_content 'Delete post'
   end
 
 end
