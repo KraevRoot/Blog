@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :check_permissions, only: [:edit, :destroy]
   def index
-    @posts = Post.all
+    if params[:query].present?
+      @posts = Post.search(params[:query])
+    else
+      @posts = Post.all
+    end
   end
 
   def new
