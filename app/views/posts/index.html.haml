@@ -8,19 +8,8 @@
       / posts
       = render partial: 'posts_preview'
       / Pagination
-      %ul.pager
-        %li.previous
-          %a{href: '#'} Prev
-        %li.next
-          %a{href: '#'} Next
+      = render partial: 'pagination'
     .col-md-4
       = render partial: 'search'
       = render partial: 'categories'
       = render partial: 'side_widget'
-    %hr/
-    / Footer
-    %footer
-      .row
-        .col-lg-12
-          %p Copyright Best Blog in the World! 2016
-

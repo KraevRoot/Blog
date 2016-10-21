@@ -3,11 +3,11 @@ class PostsController < ApplicationController
   before_action :check_permissions, only: [:edit, :destroy]
   def index
     if params[:query].present?
-      @posts = Post.search(params[:query])
+      @posts = Post.search(params[:query], page: params[:page], per_page: 10)
     elsif params[:category_id].present?
-      @posts = Category.find(params[:category_id]).posts
+      @posts = Category.find(params[:category_id]).posts.page(params[:page]).per(10)
     else
-      @posts = Post.all
+      @posts = Post.all.page(params[:page]).per(10)
     end
   end
 
