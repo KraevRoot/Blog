@@ -3,5 +3,9 @@
   = link_to 'Sign out', destroy_user_session_path, method: 'delete', class: 'navbar-brand'
   %p{class: 'navbar-brand'}= "Hello, #{current_user.email}"
 - else
-  = link_to 'Sign in', new_user_session_path, class: 'navbar-brand'
-  = link_to 'Sign up', new_user_registration_path, class: 'navbar-brand'
+  = link_to new_user_session_path, class: 'navbar-brand' do
+    %span.glyphicon.glyphicon-log-in
+    Sign in
+  = link_to  new_user_registration_path, class: 'navbar-brand' do
+    %span.glyphicon.glyphicon-user 
+    Sign up

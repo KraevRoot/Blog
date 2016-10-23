@@ -7,7 +7,9 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to 'Home', root_path, class: 'navbar-brand'
+      = link_to root_path, class: 'navbar-brand' do
+        %span.glyphicon.glyphicon-home
+        Home
       = render 'layouts/nav_links_for_auth'
       
     .collapse.navbar-collapse
