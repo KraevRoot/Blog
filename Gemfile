@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'searchkick'
 gem 'kaminari'
+gem 'paperclip', '~> 5.0.0'
 group :development, :test do
   gem 'byebug'
 end
